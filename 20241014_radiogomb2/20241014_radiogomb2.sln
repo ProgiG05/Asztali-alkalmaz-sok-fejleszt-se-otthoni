@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35026.282
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20241014_radiogomb2", "20241014_radiogomb2\20241014_radiogomb2.csproj", "{7B36EAFB-14F6-4C6D-970C-4A53896C8B45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B36EAFB-14F6-4C6D-970C-4A53896C8B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B36EAFB-14F6-4C6D-970C-4A53896C8B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B36EAFB-14F6-4C6D-970C-4A53896C8B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B36EAFB-14F6-4C6D-970C-4A53896C8B45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87A9D727-E27A-4DFF-8962-B727D6090EA8}
+	EndGlobalSection
+EndGlobal

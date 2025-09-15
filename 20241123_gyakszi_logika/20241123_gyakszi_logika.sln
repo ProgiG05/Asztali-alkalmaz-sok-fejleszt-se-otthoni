@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35130.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20241123_gyakszi_logika", "20241123_gyakszi_logika\20241123_gyakszi_logika.csproj", "{B717677F-42EB-4323-805F-05687783DE6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B717677F-42EB-4323-805F-05687783DE6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B717677F-42EB-4323-805F-05687783DE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B717677F-42EB-4323-805F-05687783DE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B717677F-42EB-4323-805F-05687783DE6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47632EB4-7037-4D2C-A081-8C523496C3EA}
+	EndGlobalSection
+EndGlobal

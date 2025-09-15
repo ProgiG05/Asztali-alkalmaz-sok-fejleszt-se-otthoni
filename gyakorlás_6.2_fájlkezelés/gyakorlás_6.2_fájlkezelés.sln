@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34114.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gyakorlás_6.2_fájlkezelés", "gyakorlás_6.2_fájlkezelés\gyakorlás_6.2_fájlkezelés.csproj", "{9339E770-E431-42E5-AC62-92C4F73D618F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9339E770-E431-42E5-AC62-92C4F73D618F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9339E770-E431-42E5-AC62-92C4F73D618F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9339E770-E431-42E5-AC62-92C4F73D618F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9339E770-E431-42E5-AC62-92C4F73D618F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01DF89F0-2075-48E7-8374-4A9396804C6A}
+	EndGlobalSection
+EndGlobal

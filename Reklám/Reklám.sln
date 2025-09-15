@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33927.289
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reklám", "Reklám\Reklám.csproj", "{B3713812-1013-4B0A-BD4B-792603A8CC1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3713812-1013-4B0A-BD4B-792603A8CC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3713812-1013-4B0A-BD4B-792603A8CC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3713812-1013-4B0A-BD4B-792603A8CC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3713812-1013-4B0A-BD4B-792603A8CC1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEB757FF-8C33-4625-838A-E3403B92B663}
+	EndGlobalSection
+EndGlobal
