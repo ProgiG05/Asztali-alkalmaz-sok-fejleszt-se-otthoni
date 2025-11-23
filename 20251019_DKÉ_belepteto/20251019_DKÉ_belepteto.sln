@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20251019_DKÉ_belepteto", "20251019_DKÉ_belepteto\20251019_DKÉ_belepteto.csproj", "{6BEB2A22-6BBB-45CE-AF9A-C0D61C34D855}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BEB2A22-6BBB-45CE-AF9A-C0D61C34D855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEB2A22-6BBB-45CE-AF9A-C0D61C34D855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEB2A22-6BBB-45CE-AF9A-C0D61C34D855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BEB2A22-6BBB-45CE-AF9A-C0D61C34D855}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7FBC7F4-5A15-428F-A1E3-64F97A48F7D9}
+	EndGlobalSection
+EndGlobal

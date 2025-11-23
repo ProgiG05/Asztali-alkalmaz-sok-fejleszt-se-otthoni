@@ -51,14 +51,14 @@ namespace _20250905_konyvek
 
         public virtual void Kiir()
         {
-            Console.WriteLine($"Az olvasmány címe: {Cim}");
+            Console.WriteLine($"\nAz olvasmány címe: {Cim}");
             Console.WriteLine($"Az olvasmány szerzője: {Szerzo}");
-            Console.WriteLine($"A kiadás éve: {KiadasEve} ");
+            Console.Write($"A kiadás éve: {KiadasEve} ");
+            Kora();
         }
         public virtual void Kora()
         {
-            Console.Write($"- {DateTime.Now.Year - KiadasEve} éves");
-            Console.WriteLine("");
+            Console.Write($"- {DateTime.Now.Year - KiadasEve} éves\n");
         }
     }
         class Konyv : Olvasmany
@@ -78,7 +78,7 @@ namespace _20250905_konyvek
             public override void Kiir()
             {
                 base.Kiir();
-                Console.WriteLine($"Oldalak száma: {OldalakSzama}");
+                Console.WriteLine($"Oldalak száma: {OldalakSzama}\n");
             }
         }
         class Magazin : Konyv

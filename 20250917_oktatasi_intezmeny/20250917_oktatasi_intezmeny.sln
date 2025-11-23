@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36429.23 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20250917_oktatasi_intezmeny", "20250917_oktatasi_intezmeny\20250917_oktatasi_intezmeny.csproj", "{DEAD9401-D245-40EB-BA55-077E951DE9FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEAD9401-D245-40EB-BA55-077E951DE9FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEAD9401-D245-40EB-BA55-077E951DE9FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEAD9401-D245-40EB-BA55-077E951DE9FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEAD9401-D245-40EB-BA55-077E951DE9FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8E67F2B-DD50-4202-8A3A-1B6AE3323A3B}
+	EndGlobalSection
+EndGlobal
