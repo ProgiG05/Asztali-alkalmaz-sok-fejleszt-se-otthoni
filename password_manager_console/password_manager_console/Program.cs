@@ -96,6 +96,15 @@ namespace password_manager_console
             Password = password;
             Other = " ";
         }
+        public login(string oneline)
+        {
+            string[] line = oneline.Split('\t');
+            Title = line[0];
+            Username = line[1];
+            Email = line[2];
+            Password = line[3];
+            Other = line[4];
+        }
     }
     internal class Program
     {
@@ -103,36 +112,35 @@ namespace password_manager_console
         {
             // Create a new AES algorithm instance using the default implementation.
             // yields an Aes object configured with default settings (block size, key size, etc.)
+            var aes = Aes.Create();
 
             // Specify the mode of operation for the cipher; CBC chains each block with the previous cipher block.
             // sets Cipher Block Chaining mode, which requires an IV
+            aes.Mode = CipherMode.CBC;
 
             // Generate a random cryptographic key for AES.
             // fills aes.Key with cryptographically-strong random bytes
+            aes.GenerateKey();
 
             // Generate a random initialization vector (IV) for AES/CBC.
             // fills aes.IV with cryptographically-strong random bytes
+            aes.GenerateIV();
 
             // Create an ICryptoTransform that will perform the encryption using the generated Key and IV.
             // creates an encryptor object configured with the chosen key and IV
+            var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
             // transforms the string to a byte array suitable for encryption
             // Convert the input plaintext string into a sequence of bytes using UTF-8 encoding.
+            byte[] inputBuffer = Encoding.UTF8.GetBytes(passwordIn);
 
             // Perform the encryption on the entire plaintext byte array and obtain the ciphertext bytes.
             // encrypts the bytes and handles padding as needed
+            byte[] encrypted = encryptor.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
 
             // returns the ciphertext as a Base64 string
             // Convert the encrypted byte array to a Base64-encoded string for safe textual representation/storage.
-
-            var aes = Aes.Create(); 
-            aes.Mode = CipherMode.CBC;  
-            aes.GenerateKey(); 
-            aes.GenerateIV(); 
-            var encryptor = aes.CreateEncryptor(aes.Key, aes.IV); 
-            byte[] inputBuffer = Encoding.UTF8.GetBytes(passwordIn); 
-            byte[] encrypted = encryptor.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length); 
-            return Convert.ToBase64String(encrypted); 
+            return Convert.ToBase64String(encrypted);
         }
         public static void Hashing()
         {
@@ -140,46 +148,85 @@ namespace password_manager_console
         }
         public static string Decryption(string passwordOut)
         {
-            // decryption with AES
+            // Create a new AES algorithm instance using the default implementation.
+            // This returns an Aes object configured with default settings (block size, key size, etc.).
             var aes = Aes.Create();
+
+            // Set the cipher mode to CBC (Cipher Block Chaining).
+            // CBC requires an initialization vector (IV) to chain blocks together.
             aes.Mode = CipherMode.CBC;
+
+            // NOTE: The following two calls generate a new random Key and IV.
+            // In a correct encryption/decryption flow you must use the SAME Key and IV
+            // that were used during encryption. Generating new ones here will NOT recover
+            // the original plaintext unless the Key and IV are persisted and reused.
             aes.GenerateKey();
             aes.GenerateIV();
-            var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-            byte[] inputBuffer = Convert.FromBase64String(passwordOut);
-            byte[] decrypted = decryptor.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
-            return Encoding.UTF8.GetString(decrypted);
 
+            // Create a decryptor ICryptoTransform using the aes.Key and aes.IV.
+            // The decryptor performs the inverse transformation of the encryptor.
+            var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+            // The stored ciphertext is Base64-encoded text. Convert it back to raw bytes.
+            byte[] inputBuffer = Convert.FromBase64String(passwordOut);
+
+            // Perform the actual decryption on the full ciphertext buffer.
+            // TransformFinalBlock handles any padding and returns the plaintext bytes.
+            byte[] decrypted = decryptor.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
+
+            // Convert the plaintext bytes back to a UTF-8 string and return it.
+            return Encoding.UTF8.GetString(decrypted);
         }
         public static string ShowAllRules()
         {
             return "Username must be less the 25 characters long.\nThe email must contain at least one '@' and '.' character.\nThe password: \n\tMust be at least 8 characters long.\n\tMust contain at least one special character.\n\tMust contain one number.\n\tMust contain one uppercase letter.\n";
         }
-        public static void ShowAllLogins()
+        //public static void ShowAllLoginsDB()
+        //{
+        //    string connectionString = "Data Source=localhost;Initial Catalog=password_manager_db;Integrated Security=True;";
+        //    string queryString = "SELECT * FROM login";
+        //    SqlConnection connection1 = new SqlConnection(connectionString);
+        //    SqlDataAdapter dataAdapter = new SqlDataAdapter(queryString, connection1);
+        //    DataSet dataSet = new DataSet();
+        //    connection1.Open();
+        //    dataAdapter.Fill(dataSet);
+        //    connection1.Close();
+        //    foreach (DataRow row in dataSet.Tables[0].Rows)
+        //    {
+        //        Console.WriteLine($"Title: {row["title"]}\nUsername: {row["username"]}\nEmail: {row["email"]}\nPassword: {Decryption(row["password"].ToString())}\nOther: {row["other"]}\n");
+        //    }
+        //}
+        //public static void AddLoginDB(login newLogin)
+        //{
+        //    string connectionString = "Data Source=localhost;Initial Catalog=password_manager_db;Integrated Security=True;";
+        //    string queryString = $"INSERT INTO login (title, username, email, password, other) VALUES ({newLogin.Title}, {newLogin.Username}, {newLogin.Email}, {newLogin.Password}, {newLogin.Other})";
+        //    SqlConnection connection = new SqlConnection(connectionString);
+        //    SqlDataAdapter dataAdapter = new SqlDataAdapter(queryString,connectionString);
+        //    connection.Open();
+        //    dataAdapter.InsertCommand = new SqlCommand(queryString, connection);
+        //    dataAdapter.InsertCommand.ExecuteNonQuery();
+        //    connection.Close();
+        //}
+        static List<login> data = new List<login>();
+        public static void ShowAllLoginsText()
         {
-            string connectionString = "Data Source=localhost;Initial Catalog=password_manager_db;Integrated Security=True;";
-            string queryString = "SELECT * FROM login";
-            SqlConnection connection1 = new SqlConnection(connectionString);
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(queryString, connection1);
-            DataSet dataSet = new DataSet();
-            connection1.Open();
-            dataAdapter.Fill(dataSet);
-            connection1.Close();
-            foreach (DataRow row in dataSet.Tables[0].Rows)
+            System.IO.File.ReadAllLines("logins.txt").ToList().ForEach(x => data.Add(new login(x)));
+            foreach (var item in data)
             {
-                Console.WriteLine($"Title: {row["title"]}\nUsername: {row["username"]}\nEmail: {row["email"]}\nPassword: {Decryption(row["password"].ToString())}\nOther: {row["other"]}\n");
+                Console.WriteLine($"Title: {item.Title}");
+                Console.WriteLine($"Username: {item.Username}");
+                Console.WriteLine($"Email: {item.Email}");
+                Console.WriteLine($"Password: {item.Password}");
+                Console.WriteLine($"Password: {Decryption(item.Password)}");
+                Console.WriteLine($"Other: {item.Other}");
+                Console.WriteLine();
             }
         }
-        public static void AddLogin(login newLogin)
+        public static void AddNewLoginText(login newlog)
         {
-            string connectionString = "Data Source=localhost;Initial Catalog=password_manager_db;Integrated Security=True;";
-            string queryString = $"INSERT INTO login (title, username, email, password, other) VALUES ({newLogin.Title}, {newLogin.Username}, {newLogin.Email}, {newLogin.Password}, {newLogin.Other})";
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(queryString,connectionString);
-            connection.Open();
-            dataAdapter.InsertCommand = new SqlCommand(queryString, connection);
-            dataAdapter.InsertCommand.ExecuteNonQuery();
-            connection.Close();
+            System.IO.StreamWriter sw = new System.IO.StreamWriter("logins.txt");
+            sw.WriteLine($"{newlog.Title}\t{newlog.Username}\t{newlog.Email}\t{Encryption(newlog.Password)}\t{newlog.Other}\t");
+            sw.Close();
         }
         static void Main(string[] args)
         {
@@ -209,7 +256,8 @@ namespace password_manager_console
                             string other = Console.ReadLine();
 
                             login newLogin = new login(title, username, email, password, other);
-                            AddLogin(newLogin);
+                            //AddLoginDB(newLogin);
+                            AddNewLoginText(newLogin);
 
                             Console.WriteLine("\nLogin created successfully! The login has been uploaded to the database!");
                             Console.Write("Would you like to create another login? (y/n): ");
@@ -231,7 +279,8 @@ namespace password_manager_console
                         string other = Console.ReadLine();
 
                         login newLogin = new login(title, username, email, password, other);
-                        AddLogin(newLogin);
+                        //AddLoginDB(newLogin);
+                        AddNewLoginText(newLogin);
 
                         Console.WriteLine("\nLogin created successfully! The login has been uploaded to the database!");
                     }
@@ -248,7 +297,8 @@ namespace password_manager_console
             }
             else if (command == "s")
             {
-                ShowAllLogins();
+                //ShowAllLoginsDB();
+                ShowAllLoginsText();
             }
             else
             {
