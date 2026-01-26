@@ -231,13 +231,13 @@ namespace password_manager_console
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the password manager Console Application version!\n");
-            Console.Write("Do you want to create new logins('c') or do you want to check out the logins('s') (c/s): ");
+            Console.Write("Do you want to create new logins('c') or do you want to check out the logins('cc') (c/cc): ");
             string command = Console.ReadLine().ToLower();
             if (command == "c")
             {
                 try
                 {
-                    Console.Write("Would you like to create multiple('m') or just one login('o')? (m/o): ");
+                    Console.Write("Would you like to create multiple('m') or just one login('s')? (m/s): ");
                     string choice = Console.ReadLine().ToLower();
                     if (choice == "m")
                     {
@@ -265,7 +265,7 @@ namespace password_manager_console
                             if (another != "y"){ break;}
                         }
                     }
-                    else if (choice == "o")
+                    else if (choice == "s")
                     {
                         Console.Write("Title of the login: ");
                         string title = Console.ReadLine();
@@ -295,7 +295,7 @@ namespace password_manager_console
                     throw;
                 }
             }
-            else if (command == "s")
+            else if (command == "cc")
             {
                 //ShowAllLoginsDB();
                 ShowAllLoginsText();
