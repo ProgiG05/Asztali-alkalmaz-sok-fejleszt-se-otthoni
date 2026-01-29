@@ -1,0 +1,35 @@
+azonosito;cim;szerzo;oldalszam;kategoria
+1;Egri csillagok;Gárdonyi Géza;450;Regény;19. század
+2;A Pál utcai fiúk;Molnár Ferenc;280;Ifjúsági;tinédzserek
+3;Tüskevár;Fekete István;320;Ifjúsági;fiatal felnőttek
+4;A kőszívű ember fiai;Jókai Mór;560;Regény;19. század
+5;Az arany ember;Jókai Mór;520;Regény;19. század
+6;Légy jó mindhalálig;Móricz Zsigmond;300;Ifjúsági;fiatal felnőttek
+7;Szent Péter esernyője;Mikszáth Kálmán;260;Regény;19. század
+8;A Noszty fiú esete Tóth Marival;Mikszáth Kálmán;340;Regény;19. század
+9;Robinson Crusoe;Daniel Defoe;270;Ifjúsági;gyerekek
+10;Tom Sawyer kalandjai;Mark Twain;290;Ifjúsági;tinédzserek
+11;Kincskereső kisködmön;Móra Ferenc;220;Ifjúsági;gyerekek
+12;A kis herceg;Antoine de Saint-Exupéry;120;Ifjúsági;gyerekek
+13;Harry Potter és a bölcsek köve;J.K. Rowling;350;Ifjúsági;tinédzserek
+14;Harry Potter és a titkok kamrája;J.K. Rowling;360;Ifjúsági;tinédzserek
+15;Harry Potter és az azkabani fogoly;J.K. Rowling;370;Ifjúsági;tinédzserek
+16;Harry Potter és a Tűz Serlege;J.K. Rowling;450;Ifjúsági;fiatal felnőttek
+17;Harry Potter és a Főnix Rendje;J.K. Rowling;600;Ifjúsági;fiatal felnőttek
+18;Harry Potter és a Félvér Herceg;J.K. Rowling;560;Ifjúsági;fiatal felnőttek
+19;Harry Potter és a Halál ereklyéi;J.K. Rowling;640;Ifjúsági;fiatal felnőttek
+20;A Gyűrűk Ura: A Gyűrű Szövetsége;J.R.R. Tolkien;480;Regény;20. század
+21;A Gyűrűk Ura: A két torony;J.R.R. Tolkien;450;Regény;20. század
+22;A Gyűrűk Ura: A király visszatér;J.R.R. Tolkien;500;Regény;20. század
+23;Hobbit;J.R.R. Tolkien;310;Regény;20. század
+24;1984;George Orwell;340;Tudományos;
+25;Állatfarm;George Orwell;220;Tudományos;
+26;Száz év magány;Gabriel García Márquez;420;Regény;20. század
+27;Bűn és bűnhődés;Dosztojevszkij;600;Regény;19. század
+28;Háború és béke;Lev Tolsztoj;1200;Regény;19. század
+29;Anna Karenina;Lev Tolsztoj;800;Regény;19. század
+30;A Mester és Margarita;Mihail Bulgakov;480;Regény;20. század
+31;Fahrenheit 451;Ray Bradbury;250;Tudományos;
+32;Az idő rövid története;Stephen Hawking;210;Tudományos;
+33;Kozmosz;Carl Sagan;365;Tudományos;
+34;Az ember tragédiája;Madách Imre;410;Regény;19. század

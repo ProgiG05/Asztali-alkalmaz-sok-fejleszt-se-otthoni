@@ -1,0 +1,18 @@
+azonosito;tipus;ferohely;sebesseg;uzemanyagTipus;utasokSzama;fajta;kibocsatas;energiaSzint
+KB010;kerékpár;1;25;;;városi;0;
+XYZ;autó;5;180;benzin;; ;120;35
+ABC123;autó;4;160;elektromos;; ;0;80
+DIESEL1;autó;2;150;dízel;; ;200;10
+BUS01;busz;40;100;;25;;15;
+BUS02;busz;30;80;;3;;20;
+BUS03;busz;50;90;;0;;12;
+KB001;kerékpár;1;25;;;városi;0;
+ROAD1;kerékpár;1;45;;;országúti;0;
+MNT01;kerékpár;1;30;;;hegyi;0;
+EBIKE01;kerékpár;1;25;;;városi;0;
+OLDCAR;autó;5;140;benzin;; ;180;4
+SMALLBUS;busz;20;70;;4;;25;
+EX1;autó;5;170;benzin;; ;110;40
+EX2;autó;4;150;elektromos;; ;0;90
+EX3;autó;2;130;dízel;; ;180;15
+EX4;busz;60;95;;30;;18;
