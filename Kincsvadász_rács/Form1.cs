@@ -91,7 +91,7 @@ namespace Kincsvadász_rács
                     case "Empty":
                         button.BackColor = Color.LightGray;
                         button.Text = "";
-                        Counter++;
+                        Counter += 0;
                         break;
                     case "Treasure":
                         button.BackColor = Color.Green;
@@ -110,7 +110,6 @@ namespace Kincsvadász_rács
             }
         }
 
-        
         Form form3; //Form címke létrhozása itt.
         System.Windows.Forms.Label lbl_pontszam; //címke inicializálása itt.             
         private void button1_Click(object sender, EventArgs e)
@@ -289,48 +288,65 @@ namespace Kincsvadász_rács
                             form2.Hide();
                             Form form4 = new Form();
                             form4.Show();
-                            form4.Width = 300;
-                            form4.Height = 300;
+                            form4.Width = 350;
+                            form4.Height = 500;
 
                             ComboBox filter = new ComboBox();
                             filter.Items.Add("Összes eredmény");
                             filter.Items.Add("Név szerint");
                             filter.Items.Add("Pontszám szerint");
-                            filter.Width = 290;
+                            filter.Items.Add("Idő szerint");
+                            filter.Width = 300;
                             filter.Height = 20;
+                            filter.Location = new Point(10, 300);
+                            form4.Controls.Add(filter);
 
                             List<pontok> pontokLista = new List<pontok>();
                             System.IO.File.ReadAllLines("pontok.txt").ToList().ForEach(line => pontokLista.Add(new pontok(line)));
-
-                            for (int i = 0; i < filter.Items.Count; i++)
+                            ListBox eredmények = new ListBox();
+                            eredmények.Width = 300;
+                            eredmények.Height = 280;
+                            eredmények.Location = new Point(10, 10);
+                            filter.SelectedIndexChanged += (sFilter,fFilter) => 
                             {
-                                if (filter.Items[i].ToString() == "Összes eredmény")
+                                if (filter.SelectedItem.ToString() == "Összes eredmény")
                                 {
-                                    ListBox eredmények = new ListBox();
+                                    eredmények.Items.Clear();
                                     pontokLista.ForEach(line => eredmények.Items.Add($"Név: {line.nev} Pontok: {line.pont} Idő: {line.ido} Dátum: {line.datum.Year}.{line.datum.Month}.{line.datum.Day}"));
-                                    eredmények.Width = 290;
-                                    eredmények.Height = 290;
-
-                                    form4.Controls.Add(eredmények);
                                 }
-                                else if (filter.Items[i].ToString() == "Név szerint")
+                                else if (filter.SelectedItem.ToString() == "Név szerint")
                                 {
-                                    ListBox eredmények = new ListBox();
+                                    eredmények.Items.Clear();
                                     pontokLista.OrderBy(x => x.nev).ToList().ForEach(line => eredmények.Items.Add($"Név: {line.nev} Pontok: {line.pont} Idő: {line.ido} Dátum: {line.datum.Year}.{line.datum.Month}.{line.datum.Day}"));
-                                    eredmények.Width = 290;
-                                    eredmények.Height = 290;
-                                    form4.Controls.Add(eredmények);
                                 }
-                                else if (filter.Items[i].ToString() == "Pontszám szerint")
+                                else if (filter.SelectedItem.ToString() == "Pontszám szerint")
                                 {
-                                    ListBox eredmények = new ListBox();
-                                    pontokLista.OrderByDescending(x => x.pont).ToList().ForEach(line => eredmények.Items.Add($"Név: {line.nev} Pontok: {line.pont} Idő: {line.ido} Dátum: {line.datum.Year}.{line.datum.Month}.{line.datum.Day}"));
-                                    eredmények.Width = 290;
-                                    eredmények.Height = 290;
-
-                                    form4.Controls.Add(eredmények);
+                                    eredmények.Items.Clear();
+                                    pontokLista.OrderByDescending(x => x.pont).ToList().ForEach(line => eredmények.Items.Add($"Pontok: {line.pont} Név: {line.nev} Idő: {line.ido} Dátum: {line.datum.Year}.{line.datum.Month}.{line.datum.Day}"));
                                 }
-                            }
+                                else if (filter.SelectedItem.ToString() == "Idő szerint")
+                                {
+                                    eredmények.Items.Clear();
+                                    pontokLista.OrderByDescending(x => x.ido).ToList().ForEach(line => eredmények.Items.Add($"Idő: {line.ido} Pontok: {line.pont} Név: {line.nev} Dátum: {line.datum.Year}.{line.datum.Month}.{line.datum.Day}"));
+                                }  
+                            };
+                            form4.Controls.Add(eredmények);
+
+                            Button kilépés = new Button();
+                            kilépés.Text = "Kilépés";
+                            kilépés.Width = 100;
+                            kilépés.Height = 20;
+                            kilépés.Location = new Point(10,370);
+                            kilépés.Click += (sExit, eExit) => CloseAllAndExit();
+                            form4.Controls.Add(kilépés);
+
+                            Button újJáték = new Button();
+                            újJáték.Text = "Új játék";
+                            újJáték.Width = 100;
+                            újJáték.Height = 20;
+                            újJáték.Location = new Point(110, 370);
+                            újJáték.Click += (sNew, eNew) => ShowStartingPage();
+                            form4.Controls.Add(újJáték);
                         }
                     }
 
@@ -356,5 +372,59 @@ namespace Kincsvadász_rács
                 };
             };
         }
+
+        private void CloseAllAndExit()
+        {
+            // Make a copy of the open forms collection to avoid modifying the collection while iterating
+            var openForms = Application.OpenForms.Cast<Form>().ToList(); // copy list of open forms
+            foreach (var open in openForms)
+            {
+                // Only attempt to close forms that are not already disposed
+                if (!open.IsDisposed)
+                {
+                    open.Close(); // close this form (will trigger Form.Closing / Form.Closed events)
+                }
+            }
+            Application.Exit(); // ensure the message loop ends and the process exits
+        }
+        private void ShowStartingPage()
+        {
+            var openForms = Application.OpenForms.Cast<Form>().ToList();
+            foreach (var open in openForms)
+            {
+                if (open == this) continue; // keep the starting page
+                if (!open.IsDisposed) {open.Close();} //close everything else
+            }
+
+            // Also explicitly close any stored secondary form reference
+            if (form3 != null && !form3.IsDisposed)
+            {
+                form3.Close();
+                form3 = null;
+            }
+
+            // Show and restore the starting form
+            if (this.IsDisposed)
+            {
+                // If this instance was disposed for some reason, create and show a new one.
+                var starter = new Form1();
+                starter.Show();
+                return;
+            }
+
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.BringToFront();
+
+            // Reset game state so the user can start a new game
+
+            buttonlist.Clear();
+            Counter = 0;
+            foundTreasure = 0;
+            id = 0;
+            cimke = 0;
+            lbl_pontszam = null;
+        }
+
     }
 }
